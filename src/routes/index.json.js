@@ -1,3 +1,4 @@
+// https://developer.wordpress.org/rest-api/key-concepts/
 const uri =
   'https://sayhello.how/wp-json/wp/v2/posts?orderby=title&order=asc&per_page=99';
 
