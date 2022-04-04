@@ -1,0 +1,14 @@
+query ALL_LANGS($first: Int) {
+  posts(first: $first) {
+    edges {
+      node {
+        ...ListedLang
+      }
+    }
+  }
+}
+
+fragment ListedLang on Post {
+  title
+  slug
+}

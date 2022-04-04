@@ -2,40 +2,43 @@
   "name": "src",
   "version": "0.0.1",
   "scripts": {
+    "gen": "graphql-codegen --config ./.graphqlrc.yaml",
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.15.8",
-    "@babel/preset-react": "^7.14.5",
+    "@babel/core": "^7.17.8",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-react": "^7.16.7",
+    "@kitql/all-in": "^0.6.3",
     "@sveltejs/kit": "next",
-    "@types/node": "^16.10.3",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-typescript": "^14.0.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-wesbos": "^2.0.1",
+    "@types/node": "^16.11.26",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^16.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-wesbos": "^3.0.2",
     "eslint-plugin-html": "^6.2.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.26.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-svelte3": "^3.2.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "eslint-plugin-svelte3": "^3.4.1",
     "normalize.css": "^8.0.1",
-    "prettier": "^2.4.1",
-    "prettier-plugin-svelte": "^2.4.0",
-    "sass": "^1.42.1",
-    "svelte": "^3.43.1",
-    "svelte-preprocess": "^4.9.8",
-    "typescript": "^4.4.3"
+    "prettier": "^2.6.2",
+    "prettier-plugin-svelte": "^2.6.0",
+    "sass": "^1.49.11",
+    "svelte": "^3.46.6",
+    "svelte-preprocess": "^4.10.5",
+    "typescript": "^4.6.3"
   },
   "type": "module",
   "eslintConfig": {
-    "extends": "wesbos",
+    "extends": "wesbos/typescript",
     "plugins": [
       "svelte3"
     ],
@@ -46,9 +49,6 @@
         ],
         "processor": "svelte3/svelte3"
       }
-    ],
-    "rules": {
-      "no-console": "warn"
-    }
+    ]
   }
 }

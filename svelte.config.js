@@ -1,13 +1,21 @@
-/** @type {import('@sveltejs/kit').Config} */
 import preprocess from 'svelte-preprocess';
+import watchAndRun from '@kitql/vite-plugin-watch-and-run';
 
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
-	kit: {
-		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
-	},
+  kit: {
+    vite: {
+      plugins: [
+        watchAndRun([
+          {
+            watch: '**/*.gql',
+            run: 'npm run gen',
+          },
+        ]),
+      ],
+    },
+  },
   preprocess: preprocess(),
-
 };
 
 export default config;

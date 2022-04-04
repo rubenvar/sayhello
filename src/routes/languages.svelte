@@ -1,4 +1,4 @@
-<script context="module">
+<script context="module" lang="ts">
   // see https://kit.svelte.dev/docs#loading
   export const load = async ({ fetch }) => {
     const res = await fetch("/index.json");
@@ -19,16 +19,11 @@
   };
 </script>
 
-<script>
-  import { allLanguages } from "$lib/stores";
+<script lang="ts">
+  import { KQL_AllLangs } from "$lib/graphql/_kitql/graphqlStores";
   import Lang from "$lib/Lang.svelte";
-  export let languages;
 
-  if (languages.length) {
-    allLanguages.update(() => [...languages]);
-  }
-
-  const langs = $allLanguages.map((lang) => ({
+  const langs = $KQL_AllLangs.data.map((lang) => ({
     name: lang.title.rendered,
     id: lang.id,
   }));

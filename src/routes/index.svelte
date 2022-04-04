@@ -1,39 +1,21 @@
-<script context="module">
-  // see https://kit.svelte.dev/docs#loading
+<script context="module" lang="ts">
+  import { KQL_AllLangs } from "$lib/graphql/_kitql/graphqlStores";
+
   export const load = async ({ fetch }) => {
-    const res = await fetch("/index.json");
-
-    if (res.ok) {
-      const languages = await res.json();
-
-      return {
-        props: { languages },
-      };
-    }
-
-    const { message } = await res.json();
-
-    return {
-      error: new Error(message),
-    };
+    await KQL_AllLangs.queryLoad({ fetch, variables: { first: 20 } });
+    return {};
   };
 </script>
 
-<script>
-  import { allLanguages } from "$lib/stores";
+<script lang="ts">
   import Lang from "$lib/Lang.svelte";
-  export let languages;
 
-  if (languages.length) {
-    allLanguages.update(() => [...languages]);
-  }
-
-  const langs = $allLanguages
-    .map((lang) => ({
-      name: lang.title.rendered,
-      id: lang.id,
-    }))
-    .filter((l, i) => i < 20);
+  $: langs = $KQL_AllLangs.data.posts.edges.map((lang) => {
+    return {
+      title: lang.node.title,
+      slug: lang.node.slug,
+    };
+  });
 </script>
 
 <h1>Learn how to say <span>Hello</span> in every language:</h1>

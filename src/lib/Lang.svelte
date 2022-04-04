@@ -1,9 +1,12 @@
-<script>
-  export let lang;
+<script lang="ts">
+  import type { ListedLangFragment } from "./graphql/_kitql/graphqlTypes";
+
+  export let lang: ListedLangFragment;
 </script>
 
-<li><a href="/{lang.name}">{lang.name}</a></li>
+<li><a href="/{lang.slug}">{lang.title}</a></li>
 
+<!-- <li><a href="/{lang.title}">{lang.title}</a></li> -->
 <style lang="scss">
   li {
     a {
