@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Spanish",
+    "language": "es",
+    "notes": "Notas de ejemplo",
+    "words": {
+      "hello": "Hola",
+      "hi": "",
+      "good morning": "Buenos días",
+      "good afternoon": "Buenas tardes",
+      "good evening": "Buenas noches",
+      "good night": "Buenas noches",
+      "good bye": "Adiós",
+      "bye": "",
+      "hello on the phone": "¿Sí?",
+      "yes": "Sí",
+      "no": "No",
+      "please": "Por favor",
+      "thank you": "Gracias",
+      "answer thank you": "De nada",
+      "excuse me": "Disculpe",
+      "i'm sorry": "Perdón",
+      "how are you?": "¿Cómo estás?"
+    }
+  },
+  {
+    "name": "Basque",
+    "language": "eu",
+    "words": { "hello": "Kaixo", "bye": "Agur" }
+  },
+  { "name": "French", "language": "fr", "words": { "hello": "Bonjour" } },
+  { "name": "Italian", "language": "it", "words": { "hello": "Salve" } },
+  { "name": "Portuguese", "language": "pt", "words": { "hello": "Olá" } }
+]

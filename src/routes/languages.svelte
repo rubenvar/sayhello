@@ -1,47 +1,39 @@
 <script context="module" lang="ts">
-  // see https://kit.svelte.dev/docs#loading
-  export const load = async ({ fetch }) => {
-    const res = await fetch("/index.json");
+  import allLanguages from "$lib/data/languages.json";
 
-    if (res.ok) {
-      const languages = await res.json();
-
-      return {
-        props: { languages },
-      };
-    }
-
-    const { message } = await res.json();
-
+  export const load = async () => {
+    const languages = allLanguages.map((l) => ({
+      name: l.name,
+      slug: l.name.toLowerCase().replaceAll(" ", "-"),
+    }));
     return {
-      error: new Error(message),
+      props: { languages },
     };
   };
 </script>
 
 <script lang="ts">
-  import { KQL_AllLangs } from "$lib/graphql/_kitql/graphqlStores";
-  import Lang from "$lib/Lang.svelte";
+  import ListedLang from "$lib/ListedLang.svelte";
+  import type { TListedLanguage } from "$lib/data/lang";
 
-  const langs = $KQL_AllLangs.data.map((lang) => ({
-    name: lang.title.rendered,
-    id: lang.id,
-  }));
+  export let languages: TListedLanguage[];
 </script>
 
 <h1>All Languages</h1>
-
 <p>Check out how to say hello in any of these languages</p>
-
 <p>If you need more options, please <a href="/contact">contribute</a>!</p>
-
-{#if langs.length}
+{#if languages.length}
   <ul>
-    {#each langs as lang}
-      <Lang {lang} />
+    {#each languages as lang}
+      <ListedLang {lang} />
     {/each}
   </ul>
 {/if}
+<div class="end">
+  <p>
+    <a href="/">Check another language!</a>
+  </p>
+</div>
 
 <style lang="scss">
   ul {

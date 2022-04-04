@@ -1,21 +1,23 @@
 <script context="module" lang="ts">
-  import { KQL_AllLangs } from "$lib/graphql/_kitql/graphqlStores";
+  import allLanguages from "$lib/data/languages.json";
 
-  export const load = async ({ fetch }) => {
-    await KQL_AllLangs.queryLoad({ fetch, variables: { first: 20 } });
-    return {};
+  export const load = async () => {
+    const languages = shuffle(allLanguages).map((l) => ({
+      name: l.name,
+      slug: l.name.toLowerCase().replaceAll(" ", "-"),
+    }));
+    return {
+      props: { languages },
+    };
   };
 </script>
 
 <script lang="ts">
-  import Lang from "$lib/Lang.svelte";
+  import shuffle from "just-shuffle";
+  import ListedLang from "$lib/ListedLang.svelte";
+  import type { TListedLanguage } from "$lib/data/lang";
 
-  $: langs = $KQL_AllLangs.data.posts.edges.map((lang) => {
-    return {
-      title: lang.node.title,
-      slug: lang.node.slug,
-    };
-  });
+  export let languages: TListedLanguage[];
 </script>
 
 <h1>Learn how to say <span>Hello</span> in every language:</h1>
@@ -31,10 +33,10 @@
 </p>
 <p>So go ahead and check some of the most popular ones here:</p>
 
-{#if langs.length}
+{#if languages.length}
   <ul>
-    {#each langs as lang}
-      <Lang {lang} />
+    {#each languages as lang}
+      <ListedLang {lang} />
     {/each}
   </ul>
 {/if}

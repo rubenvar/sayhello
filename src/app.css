@@ -1,5 +1,6 @@
 :root {
   --accent: hsl(29, 100%, 47%);
+  --accent-dark: hsl(27, 90%, 30%);
   box-sizing: border-box;
   font-size: 62.5%;
 }
@@ -21,5 +22,11 @@ p {
 }
 
 a {
-  transition: all 0.3s;
+  color: var(--accent);
+  transition: color 0.55s;
+}
+
+a:hover {
+  color: var(--accent-dark);
+  transition: color 0.25s;
 }
